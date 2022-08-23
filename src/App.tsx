@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./Layouts/Footer";
+import Header from "./Layouts/Header";
+import { MainPage, BlogPage, PostsPage, TeamPage } from "./pages";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}{import.meta.env.VITE_SOME_KEY}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    return (
+        <div className="flex flex-col min-h-screen bg-light dark:bg-dark">
+            <Header />
+            <Router>
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="blog" element={<BlogPage />} />
+                    <Route path="blog/:blogId" element={<PostsPage />} />
+                    <Route path="team" element={<TeamPage />} />
+                </Routes>
+            </Router>
+            <Footer />
+        </div>
+    );
 }
 
-export default App
+export default App;

@@ -1,0 +1,3 @@
+GET  http://localhost/wordpress/wp-json/wp/v2/categories/1
+Authorization: Basic admin Dayatoioi90
+
